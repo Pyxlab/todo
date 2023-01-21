@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "monorepo",
-        "api"
+        "api",
+        "web"
     ]
 }
