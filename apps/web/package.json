@@ -11,6 +11,7 @@
   "dependencies": {
     "@acme/api": "*",
     "react": "^18.2.0",
+    "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {

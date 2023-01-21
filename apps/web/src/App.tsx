@@ -1,8 +1,12 @@
+import { Providers } from "./providers"
+
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <Providers>
+        <div>
+            <h1>React App</h1>
+        </div>
+    </Providers>
   )
 }
 
