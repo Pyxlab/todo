@@ -1,23 +1,28 @@
 {
-  "name": "pyx-todo",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/Pyxlab/todo",
-  "author": "Walaff Fernandes",
-  "license": "MIT",
-  "private": true,
-  "workspaces": {
-    "packages": [
-        "apps/*",
-        "packages/*",
-        "tools/*",
-        "libs/*"
-    ],
-    "nohoist": [
-        "**/adonis-preset-ts"
-    ]
-  },
-  "dependencies": {
-    "turborepo": "^0.0.1"
-  }
+    "name": "pyx-todo",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/Pyxlab/todo",
+    "author": "Walaff Fernandes",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "build": "turbo run build",
+        "dev": "turbo run dev",
+        "test": "turbo run test"
+    },
+    "workspaces": {
+        "packages": [
+            "apps/*",
+            "packages/*",
+            "tools/*",
+            "libs/*"
+        ],
+        "nohoist": [
+            "**/adonis-preset-ts"
+        ]
+    },
+    "dependencies": {
+        "turborepo": "^0.0.1"
+    }
 }
