@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { httpBatchLink } from '@trpc/client';
 import superjson from 'superjson';
 import { useCookies } from 'react-cookie';
-import { trpc } from '../utils/trpc';
+import { trpc } from '~/utils/trpc';
 
 const url = import.meta.env.VITE_API_URL;
 
