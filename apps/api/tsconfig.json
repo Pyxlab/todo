@@ -6,6 +6,7 @@
     "outDir": "build",
     "rootDir": "./",
     "sourceMap": true,
+    "declaration": true,
     "paths": {
       "App/*": ["./app/*"],
       "Config/*": ["./config/*"],
