@@ -1,0 +1,20 @@
+{
+  "name": "pyx-todo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Pyxlab/todo",
+  "author": "Walaff Fernandes",
+  "license": "MIT",
+  "private": false,
+  "workspaces": {
+    "packages": [
+        "apps/*",
+        "packages/*",
+        "tools/*",
+        "libs/*"
+    ]
+  },
+  "dependencies": {
+    "turborepo": "^0.0.1"
+  }
+}
