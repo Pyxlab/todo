@@ -10,6 +10,10 @@
   },
   "dependencies": {
     "@acme/api": "*",
+    "@tanstack/react-query": "^4.22.3",
+    "@trpc/client": "^10.9.0",
+    "@trpc/react-query": "^10.9.0",
+    "@trpc/server": "^10.9.0",
     "react": "^18.2.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0"
