@@ -1,5 +1,6 @@
 {
     "conventionalCommits.scopes": [
-        "monorepo"
+        "monorepo",
+        "api"
     ]
 }

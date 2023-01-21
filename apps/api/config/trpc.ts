@@ -1,0 +1,25 @@
+import { AdonisTrpcConfig } from '@ioc:Pyxlab/Adonis/Trpc'
+
+const trpc: AdonisTrpcConfig = {
+  /*
+  |--------------------------------------------------------------------------
+  | Trpc Base Path
+  |--------------------------------------------------------------------------
+  |
+  | The base path to use for the trpc server
+  |
+  */
+  basePath: '/trpc',
+
+  /*
+  |--------------------------------------------------------------------------
+  | Trpc Router
+  |--------------------------------------------------------------------------
+  |
+  | The router to use for the trpc server
+  |
+  */
+  router: () => import('App/Routes'),
+}
+
+export default trpc
