@@ -1,7 +1,8 @@
-import { router, publicProcedure } from '@ioc:Pyxlab/Adonis/Trpc'
+import { router } from '@ioc:Pyxlab/Adonis/Trpc'
+import { authRouter } from 'App/Routes/Auth'
 
 const appRouter = router({
-  hello: publicProcedure.query(() => ({ message: 'Hello world!' })),
+  auth: authRouter,
 })
 
 export default appRouter
