@@ -8,6 +8,8 @@
     "private": true,
     "scripts": {
         "build": "turbo run build",
+        "build:watch": "turbo run build:watch",
+        "serve:watch": "turbo run serve:watch",
         "dev": "turbo run dev",
         "test": "turbo run test"
     },

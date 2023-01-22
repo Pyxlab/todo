@@ -5,6 +5,8 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
+    "build:watch": "tsc --watch",
+    "serve:watch": "node ace serve --watch",
     "dev": "node ace serve --watch",
     "build": "node ace build --production",
     "start": "node server.js",

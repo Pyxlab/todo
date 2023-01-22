@@ -1,6 +1,8 @@
 {
     "$schema": "https://turbo.build/schema.json",
     "pipeline": {
+        "build:watch": {},
+        "serve:watch": {},
         "build": {
             "outputs": [
                 "dist/**"
@@ -11,6 +13,9 @@
         },
         "lint": {},
         "dev": {
+            "dependsOn": [
+                "build:watch", "serve:watch"
+            ],
             "cache": false
         }
     }
