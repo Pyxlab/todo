@@ -20,6 +20,7 @@
     "react": "^18.2.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.42.1",
     "react-router-dom": "^6.7.0",
     "zustand": "^4.3.2"
   },
