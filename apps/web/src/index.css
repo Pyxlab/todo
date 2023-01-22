@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.input-style {
+    @apply bg-slate-100 text-slate-600 dark:text-slate-200 rounded-lg py-3 pl-3 pr-10 outline-transparent border-2 border-transparent hover:border-violet-600 focus:border-violet-600 focus:outline-none transition dark:bg-slate-800
+}
+
 /* clears the 'X' from Internet Explorer */
 input[type="search"]::-ms-clear {
     display: none;
