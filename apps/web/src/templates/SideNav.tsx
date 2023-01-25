@@ -4,7 +4,7 @@ import { Button } from '~/components/Button'
 import { Directories } from '~/components/Directories';
 import { NavLinks } from '~/components/NavLinks';
 
-export const SideBar: React.FC<{ className?: string }> = ({ className }) => {
+export const SideNav: React.FC<{ className?: string }> = ({ className }) => {
     return (
         <nav className={`bg-slate-100 h-screen w-60 xl:w-2/12 dark:bg-slate-800 z-20 ${className}`}>
             <header className="flex flex-col">

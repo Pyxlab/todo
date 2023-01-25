@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { SortItem, sortList } from "~/utils/sort-list";
 
+
 interface State {
     total: number;
     setTotal: (total: number) => void;
@@ -15,4 +16,5 @@ export const useStore = create<State>((set) => ({
     setTotal: (total) => set({ total }),
 }));
 
-export * from "./useThemeStore";
+export * from "./useTheme";
+export * from "./useRemember";
