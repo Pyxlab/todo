@@ -1,3 +1,4 @@
+import { HTMLInputTypeAttribute } from "react";
 import {
     Controller,
     UseControllerProps,
@@ -35,6 +36,12 @@ export const InputField: React.FC<InputFieldProps> = ({
         };
     }
 
+    if (props.type === "checkbox" || props.type === "radio") {
+        throw new Error(
+            `InputField does not support ${props.type} inputs. Please use CheckboxField or RadioField instead.`
+        );
+    }
+
     return (
         <Controller
             name={name}
@@ -44,7 +51,7 @@ export const InputField: React.FC<InputFieldProps> = ({
             shouldUnregister={shouldUnregister}
             render={({
                 field: { onChange, ...field },
-                fieldState: { error },
+                fieldState: { error, isDirty },
             }) => (
                 <div>
                     <label htmlFor={inputId} className="sr-only">
@@ -56,7 +63,7 @@ export const InputField: React.FC<InputFieldProps> = ({
                         onChange={handleChange(onChange)}
                         id={inputId}
                         name="email"
-                        className={`${!!error ? 'input-style-error' : 'input-style'} ${className} ${fullWidth ? "w-full" : ""}`}
+                        className={`${!!error ? 'input-style-error' : isDirty ? 'input-style-dirty' : 'input-style'} ${className} ${fullWidth ? "w-full" : ""}`}
                         placeholder={label}
                     />
                     {!!error ? (
@@ -65,7 +72,7 @@ export const InputField: React.FC<InputFieldProps> = ({
                         </p>
                     ): (
                         <p className="text-gray-500 text-xs mt-1">
-                            {helperText || " "}
+                            {helperText} &nbsp;
                         </p>
                     )}
                 </div>
