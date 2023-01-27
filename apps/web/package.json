@@ -12,6 +12,7 @@
     "@acme/api": "*",
     "@headlessui/react": "^1.7.7",
     "@headlessui/tailwindcss": "^0.1.2",
+    "@tailwindcss/forms": "^0.5.3",
     "@tanstack/react-query": "^4.22.3",
     "@trpc/client": "^10.9.0",
     "@trpc/react-query": "^10.9.0",
@@ -22,6 +23,8 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.42.1",
     "react-router-dom": "^6.7.0",
+    "react-toastify": "^9.1.1",
+    "zod": "^3.20.2",
     "zustand": "^4.3.2"
   },
   "devDependencies": {

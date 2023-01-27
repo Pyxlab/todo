@@ -17,6 +17,9 @@ module.exports = {
         },
     },
     plugins: [
+        require('@tailwindcss/forms')({
+            strategy: 'class',
+        }),
         require('@headlessui/tailwindcss')({ prefix: 'ui' })
     ],
     darkMode: "class",

@@ -1,4 +1,3 @@
-import { HTMLInputTypeAttribute } from "react";
 import {
     Controller,
     UseControllerProps,
@@ -63,7 +62,7 @@ export const InputField: React.FC<InputFieldProps> = ({
                         onChange={handleChange(onChange)}
                         id={inputId}
                         name="email"
-                        className={`${!!error ? 'input-style-error' : isDirty ? 'input-style-dirty' : 'input-style'} ${className} ${fullWidth ? "w-full" : ""}`}
+                        className={`form-input ${!!error ? 'input-style-error' : isDirty ? 'input-style-dirty' : 'input-style'} ${className} ${fullWidth ? "w-full" : ""}`}
                         placeholder={label}
                     />
                     {!!error ? (

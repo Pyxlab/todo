@@ -317,6 +317,13 @@
   resolved "https://registry.npmjs.org/@arr/every/-/every-1.0.1.tgz"
   integrity sha512-UQFQ6SgyJ6LX42W8rHCs8KVc0JS0tzVL9ct4XYedJukskYVWTo49tNiMEK9C2HTyarbNiT/RVIRSY82vH+6sTg==
 
+"@babel/runtime@^7.20.6":
+  version "7.20.13"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.20.13.tgz#7055ab8a7cff2b8f6058bf6ae45ff84ad2aded4b"
+  integrity sha512-gt3PKXs0DBoL9xCvOIIZ2NEqAGZqHjAnmVbfQtB620V0uReIQutpel14KcneZuer7UioY8ALKZ7iocavvzTNFA==
+  dependencies:
+    regenerator-runtime "^0.13.11"
+
 "@colors/colors@1.5.0":
   version "1.5.0"
   resolved "https://registry.npmjs.org/@colors/colors/-/colors-1.5.0.tgz"
@@ -798,10 +805,10 @@
     slugify "^1.6.5"
     truncatise "0.0.8"
 
-"@pyxlab/adonis-trpc@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/@pyxlab/adonis-trpc/-/adonis-trpc-1.0.3.tgz"
-  integrity sha512-gU1z3z/t7bQaFGYGKd6HxTwutdpgkL3BetPRTQUnvduP0rFHE7K3RMfPrhKCImW4h2brDFX3tp6p/uzhR6eHuw==
+"@pyxlab/adonis-trpc@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@pyxlab/adonis-trpc/-/adonis-trpc-1.0.6.tgz#7b609fd73191af504e29113109a8a7dfaa195d36"
+  integrity sha512-nFvkcDvPw1B9Cwqk+nh8i8mXYFgATZhNyknBa6xpVjbwaDnUUEkiqDZI7R7iYnY7hntPT4vA9KkMTEZ1C5nlCQ==
   dependencies:
     "@trpc/server" "^10.9.0"
     superjson "^1.12.2"
@@ -881,6 +888,13 @@
     "@swc/core-win32-arm64-msvc" "1.3.27"
     "@swc/core-win32-ia32-msvc" "1.3.27"
     "@swc/core-win32-x64-msvc" "1.3.27"
+
+"@tailwindcss/forms@^0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/forms/-/forms-0.5.3.tgz#e4d7989686cbcaf416c53f1523df5225332a86e7"
+  integrity sha512-y5mb86JUoiUgBjY/o6FJSFZSEttfb3Q5gllE4xoKjAAD+vBrnIhE4dViwUuow3va8mpH4s9jyUbUbrRGoRdc2Q==
+  dependencies:
+    mini-svg-data-uri "^1.2.3"
 
 "@tanstack/query-core@4.22.0":
   version "4.22.0"
@@ -1849,6 +1863,11 @@ clone@^2.1.2:
   version "2.1.2"
   resolved "https://registry.npmjs.org/clone/-/clone-2.1.2.tgz"
   integrity sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==
+
+clsx@^1.1.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.2.1.tgz#0ddc4a20a549b59c93a4116bb26f5294ca17dc12"
+  integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
 
 co-compose@^7.0.2:
   version "7.0.3"
@@ -3079,6 +3098,13 @@ human-signals@^2.1.0:
   resolved "https://registry.npmjs.org/human-signals/-/human-signals-2.1.0.tgz"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
 
+i18next@^22.4.9:
+  version "22.4.9"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-22.4.9.tgz#98c8384c6bd41ff937da98b1e809ba03d3b41053"
+  integrity sha512-8gWMmUz460KJDQp/ob3MNUX84cVuDRY9PLFPnV8d+Qezz/6dkjxwOaH70xjrCNDO+JrUL25iXfAIN9wUkInNZw==
+  dependencies:
+    "@babel/runtime" "^7.20.6"
+
 iconv-lite@0.4.24:
   version "0.4.24"
   resolved "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.24.tgz"
@@ -3833,6 +3859,11 @@ mimic-fn@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/mimic-fn/-/mimic-fn-3.1.0.tgz"
   integrity sha512-Ysbi9uYW9hFyfrThdDEQuykN4Ey6BuwPD2kpI5ES/nFTDn/98yxYNLZJcgUAKPT/mcrLLKaGzJR9YVxJrIdASQ==
+
+mini-svg-data-uri@^1.2.3:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/mini-svg-data-uri/-/mini-svg-data-uri-1.4.4.tgz#8ab0aabcdf8c29ad5693ca595af19dd2ead09939"
+  integrity sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==
 
 minimatch@^3.0.5, minimatch@^3.1.1, minimatch@^3.1.2:
   version "3.1.2"
@@ -4705,6 +4736,13 @@ react-router@6.7.0:
   dependencies:
     "@remix-run/router" "1.3.0"
 
+react-toastify@^9.1.1:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-9.1.1.tgz#9280caea4a13dc1739c350d90660a630807bf10b"
+  integrity sha512-pkFCla1z3ve045qvjEmn2xOJOy4ZciwRXm1oMPULVkELi5aJdHCN/FHnuqXq8IwGDLB7PPk2/J6uP9D8ejuiRw==
+  dependencies:
+    clsx "^1.1.1"
+
 react@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
@@ -4777,6 +4815,11 @@ reflect-metadata@^0.1.13:
   version "0.1.13"
   resolved "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.1.13.tgz"
   integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
+
+regenerator-runtime@^0.13.11:
+  version "0.13.11"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.11.tgz#f6dca3e7ceec20590d07ada785636a90cdca17f9"
+  integrity sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==
 
 regex-not@^1.0.0, regex-not@^1.0.2:
   version "1.0.2"
@@ -5755,6 +5798,11 @@ z-schema@^5.0.1:
     validator "^13.7.0"
   optionalDependencies:
     commander "^9.4.1"
+
+zod-i18n-map@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/zod-i18n-map/-/zod-i18n-map-2.1.0.tgz#95d12e92e38d26f33b3f2fb4a682bb682f407646"
+  integrity sha512-dEsaj+Z3B/JVainQyH6ROxLg6pgwz1k/80zbASsFrXLdssEVohoiMusf+OEyulypjajEYw2zX9Dp8biI0WNNrw==
 
 zod@^3.20.2:
   version "3.20.2"

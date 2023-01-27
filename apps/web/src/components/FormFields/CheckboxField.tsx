@@ -53,7 +53,7 @@ export const CheckboxField: React.FC<CheckboxFieldProps> = ({
                         onChange={handleChange(onChange)}
                         name={name}
                         type="checkbox"
-                        className="bg-slate-100 dark:bg-slate-900 dark:border-violet-600 checked:dark:bg-violet-600 text-violet-600 rounded outline-transparent border-2 border-violet-500 hover:border-violet-600 focus:border-violet-600 focus:outline-none transition"
+                        className="form-checkbox bg-slate-100 dark:bg-slate-900 dark:border-violet-600 checked:dark:bg-violet-600 text-violet-600 rounded outline-transparent border-2 border-violet-500 hover:border-violet-600 focus:border-violet-600 focus:outline-none transition"
                     />
                     <label
                         htmlFor={name}
