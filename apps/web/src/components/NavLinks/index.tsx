@@ -24,7 +24,7 @@ export const NavLinks: React.FC = () => {
                     />
                     <label
                         htmlFor={link.name}
-                        className={`absolute cursor-pointer px-4 text-gray-700 hover:text-rose-600 dark:hover:text-slate-200
+                        className={`absolute cursor-pointer px-4 text-gray-700 hover:text-rose-600 dark:hover:text-slate-200 dark:text-slate-400 transition
                             ${currentPath === link.path ? "text-rose-600 dark:text-slate-200" : ""}
                         `}
                     >{link.name}</label>
