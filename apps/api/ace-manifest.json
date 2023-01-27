@@ -539,6 +539,62 @@
           "description": "Drop all custom types (Postgres only)"
         }
       ]
+    },
+    "make:procedure": {
+      "settings": {
+        "loadApp": true,
+        "stayAlive": false
+      },
+      "commandPath": "@pyxlab/adonis-trpc/build/commands/MakeProcedure",
+      "commandName": "make:procedure",
+      "description": "Create a new procedure file in app/Routes directory",
+      "args": [
+        {
+          "type": "string",
+          "propertyName": "name",
+          "name": "name",
+          "required": true,
+          "description": "Name of the model with create procedure"
+        },
+        {
+          "type": "string",
+          "propertyName": "procedure",
+          "name": "procedure",
+          "required": false,
+          "description": "Name of the procedure call"
+        }
+      ],
+      "aliases": [],
+      "flags": [
+        {
+          "name": "exact",
+          "propertyName": "exact",
+          "type": "boolean",
+          "description": "Create the procedure with the exact name as provided",
+          "alias": "e"
+        },
+        {
+          "name": "model",
+          "propertyName": "model",
+          "type": "boolean",
+          "description": "Generate model",
+          "alias": "m"
+        },
+        {
+          "name": "table",
+          "propertyName": "table",
+          "type": "boolean",
+          "description": "Generate migration",
+          "alias": "t"
+        },
+        {
+          "name": "resource",
+          "propertyName": "resource",
+          "type": "boolean",
+          "description": "Add resourceful methods to the procedure file",
+          "alias": "r"
+        }
+      ]
     }
   },
   "aliases": {}
