@@ -16,7 +16,7 @@ import { trpc } from "~/utils/trpc";
 
 export const Aside: React.FC<{ className?: string }> = ({ className }) => {
     const { handleLogout } = useAuth()
-    const { data } = trpc.auth.user.useQuery({})
+    const { data } = trpc.auth.user.useQuery()
 
     const name = data?.name ? firstLastName(data.name) : "Guest";
 

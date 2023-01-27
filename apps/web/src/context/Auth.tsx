@@ -18,7 +18,7 @@ export const AuthContextProvider: React.FC<{ children: React.ReactNode }> = ({ c
     const isAuthenticated = !!cookies.token;
 
     const { mutate, isLoading } = trpc.auth.session.useMutation();
-    const { data = null } = trpc.auth.user.useQuery('');
+    const { data = null } = trpc.auth.user.useQuery();
 
     const handleLogin = (setter: UseFormSetError<any>): SubmitHandler<AuthForm> => ({ remember, ...data }) => {
         mutate(data, {
