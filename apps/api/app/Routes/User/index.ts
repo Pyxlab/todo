@@ -1,6 +1,6 @@
-import { router } from '@ioc:Pyxlab/Adonis/Trpc'
-import { createUserProcedure } from './CreateUser'
+import router from '@ioc:Pyxlab/Adonis/Trpc/Router'
+import { createUserProcedure } from './createUser'
 
-export const userRouter = router({
+export const usersRouter = router({
   create: createUserProcedure,
 })
