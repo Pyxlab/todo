@@ -1,10 +1,13 @@
-import { router } from '@ioc:Pyxlab/Adonis/Trpc'
-import { authRouter } from 'App/Routes/Auth'
+import router from '@ioc:Pyxlab/Adonis/Trpc/Router'
+import { authRouter } from './Auth'
+import { todosRouter } from './Todo'
+import { usersRouter } from './User'
 
 const appRouter = router({
   auth: authRouter,
+  todos: todosRouter,
+  users: usersRouter,
 })
 
-export default appRouter
-
 export type AppRouter = typeof appRouter
+export default appRouter

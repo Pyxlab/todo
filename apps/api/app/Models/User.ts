@@ -4,9 +4,9 @@ import {
   column,
   beforeSave,
   BaseModel,
-  InferTypeModel,
   hasMany,
   HasMany,
+  InferTypeModel,
 } from '@ioc:Adonis/Lucid/Orm'
 import Directory from './Directory'
 import Todo from './Todo'
@@ -46,7 +46,7 @@ export default class User extends BaseModel {
     }
   }
 
-  public override serialize(): InferTypeModel<User> {
-    return super.serialize()
+  public override serialize() {
+    return super.serialize() as InferTypeModel<User>
   }
 }

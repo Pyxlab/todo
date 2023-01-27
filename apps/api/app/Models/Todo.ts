@@ -37,7 +37,7 @@ export default class Todo extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  public override serialize(): InferTypeModel<Todo> {
-    return super.serialize()
+  public override serialize() {
+    return super.serialize() as InferTypeModel<Todo>
   }
 }

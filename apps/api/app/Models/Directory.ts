@@ -34,6 +34,6 @@ export default class Directory extends BaseModel {
   public updatedAt: DateTime
 
   public serialize(): InferTypeModel<Directory> {
-    return super.serialize()
+    return super.serialize() as InferTypeModel<Directory>
   }
 }
