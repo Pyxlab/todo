@@ -18,7 +18,7 @@ export const SearchInput: React.FC = () => {
                     placeholder="Search task"
                     value={query}
                     onChange={handleChange}
-                    className="w-full input-style"
+                    className="w-full input-style pr-10"
                 />
                 <MagnifyingGlass className="absolute w-4 text-base sm:w-5 sm:text-xl right-4 top-3.5 text-slate-400" />
             </Combobox>
