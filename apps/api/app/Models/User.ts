@@ -33,6 +33,9 @@ export default class User extends BaseModel {
   @hasMany(() => Todo)
   public todos: HasMany<typeof Todo>
 
+  @column()
+  public avatar: string
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
