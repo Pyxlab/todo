@@ -9,6 +9,7 @@ export type CheckboxFieldProps = Omit<UseControllerProps, "control"> &
     Omit<React.InputHTMLAttributes<HTMLInputElement>, "name" | "type"> & {
         label: string;
         isChecked?: (value: boolean) => void;
+        checkboxClassName?: string;
     };
 
 export const CheckboxField: React.FC<CheckboxFieldProps> = ({
@@ -21,6 +22,8 @@ export const CheckboxField: React.FC<CheckboxFieldProps> = ({
     defaultChecked = false,
     onChange,
     isChecked,
+    checkboxClassName,
+    className,
     ...props
 }) => {
     const { control } = useFormContext();
@@ -43,7 +46,7 @@ export const CheckboxField: React.FC<CheckboxFieldProps> = ({
             defaultValue={defaultChecked}
             shouldUnregister={shouldUnregister}
             render={({ field: { onChange, value, ...field } }) => (
-                <div className="flex items-center">
+                <div className={`flex items-center ${className || ""}`}>
                     <input
                         {...field}
                         {...props}
@@ -53,7 +56,7 @@ export const CheckboxField: React.FC<CheckboxFieldProps> = ({
                         onChange={handleChange(onChange)}
                         name={name}
                         type="checkbox"
-                        className="form-checkbox bg-slate-100 dark:bg-slate-900 dark:border-violet-600 checked:dark:bg-violet-600 text-violet-600 rounded outline-transparent border-2 border-violet-500 hover:border-violet-600 focus:border-violet-600 focus:outline-none transition"
+                        className={`form-checkbox bg-slate-100 dark:bg-slate-900 dark:border-violet-600 checked:dark:bg-violet-600 text-violet-600 rounded outline-transparent border-2 border-violet-500 hover:border-violet-600 focus:border-violet-600 focus:outline-none transition ${checkboxClassName || ""}`}
                     />
                     <label
                         htmlFor={name}
