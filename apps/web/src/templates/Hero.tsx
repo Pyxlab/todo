@@ -15,7 +15,7 @@ export const Hero: React.FC = () => {
             <div className="ml-auto">
                 <Listbox value={sortBy} onChange={handleSortChange}  >
                     <div className="relative ">
-                        <Listbox.Button className="input-style w-44">
+                        <Listbox.Button className="input-style text-left w-48">
                             <span className="block truncate">{sortBy.title}</span>
                             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                                 <CaretDown

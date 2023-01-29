@@ -17,8 +17,13 @@ import { trpc } from "~/utils/trpc";
 export const Aside: React.FC<{ className?: string }> = ({ className }) => {
     const { handleLogout } = useAuth()
     const { data } = trpc.auth.user.useQuery()
+    const { mutateAsync } = trpc.users.updateAvatar.useMutation()
 
     const name = data?.name ? firstLastName(data.name) : "Guest";
+
+    const handleUpdateAvatar = async () => {
+        await mutateAsync({ avatar: 'https://i.pravatar.cc/150?img=56' })
+    }
 
     return (
         <aside
@@ -28,8 +33,8 @@ export const Aside: React.FC<{ className?: string }> = ({ className }) => {
                 <span className="flex items-center">
                     <UserCircle size={40} weight="fill" />
                     <span className="font-medium ml-4">Hi, {name}!</span>
-                    <Button className="ml-auto">
-                        <Pencil size={24} />
+                    <Button className="ml-auto px-[14px]">
+                        <Pencil className="max-xl:font-medium font-semibold" />
                     </Button>
                 </span>
                 <SwitchTheme />
