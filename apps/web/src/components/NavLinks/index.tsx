@@ -20,12 +20,12 @@ export const NavLinks: React.FC = () => {
                         type="radio"
                         value={link.name}
                         checked={currentPath === link.path}
-                        className="appearance-none cursor-pointer h-10 w-full block transition checked:bg-violet-100 checked:border-r-4 checked:border-rose-500 dark:checked:bg-slate-700/[.2] dark:checked:border-slate-200"
+                        className="appearance-none cursor-pointer py-5 w-full block transition checked:bg-violet-100 checked:border-r-4 checked:border-rose-500 dark:checked:bg-slate-700/[.2] dark:checked:border-slate-200"
                     />
                     <label
                         htmlFor={link.name}
-                        className={`absolute cursor-pointer px-4 text-gray-700 hover:text-rose-600 dark:hover:text-slate-200 dark:text-slate-400 transition
-                            ${currentPath === link.path ? "text-rose-600 dark:text-slate-200" : ""}
+                        className={`absolute cursor-pointer w-full px-4 hover:text-rose-600 dark:hover:text-slate-200 dark:text-slate-400 transition
+                            ${currentPath === link.path ? "text-rose-600 dark:text-slate-200" : "text-gray-700"}
                         `}
                     >{link.name}</label>
                 </li>
