@@ -1,18 +1,10 @@
-import { TRPCError } from '@trpc/server'
 import procedure from '@ioc:Pyxlab/Adonis/Trpc/Procedure'
 import { z } from 'zod'
 
-export const userAuthenticated = procedure
+export const userAuthenticated = procedure.protected
   .input(z.object({}).nullish())
   .query(async ({ ctx: { auth } }) => {
-    const isAuthenticated = auth.isAuthenticated
+    const user = auth.user
 
-    if (!isAuthenticated) {
-      throw new TRPCError({
-        code: 'UNAUTHORIZED',
-        message: 'Not authenticated',
-      })
-    }
-
-    return auth?.user?.serialize()
+    return user?.serialize()
   })
