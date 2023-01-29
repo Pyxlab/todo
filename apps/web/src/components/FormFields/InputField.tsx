@@ -22,6 +22,7 @@ export const InputField: React.FC<InputFieldProps> = ({
     onChange,
     fullWidth,
     helperText,
+    placeholder,
     ...props
 }) => {
     const { control } = useFormContext();
@@ -53,7 +54,10 @@ export const InputField: React.FC<InputFieldProps> = ({
                 fieldState: { error, isDirty },
             }) => (
                 <div>
-                    <label htmlFor={inputId} className="sr-only">
+                    <label
+                        htmlFor={inputId}
+                        className={placeholder ? "" : "sr-only"}
+                    >
                         {label}
                     </label>
                     <input
@@ -61,15 +65,23 @@ export const InputField: React.FC<InputFieldProps> = ({
                         {...field}
                         onChange={handleChange(onChange)}
                         id={inputId}
-                        name="email"
-                        className={`form-input ${!!error ? 'input-style-error' : isDirty ? 'input-style-dirty' : 'input-style'} ${className} ${fullWidth ? "w-full" : ""}`}
-                        placeholder={label}
+                        name={name}
+                        className={`form-input ${
+                            !!error
+                                ? "input-style-error"
+                                : isDirty
+                                ? "input-style-dirty"
+                                : "input-style"
+                        } ${className} ${fullWidth ? "w-full" : ""} ${
+                            placeholder ? "mt-2" : ""
+                        }`}
+                        placeholder={placeholder || label}
                     />
                     {!!error ? (
                         <p className="text-red-500 text-xs mt-1">
                             {error.message}
                         </p>
-                    ): (
+                    ) : (
                         <p className="text-gray-500 text-xs mt-1">
                             {helperText} &nbsp;
                         </p>
