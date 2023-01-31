@@ -13,6 +13,8 @@ interface State {
     toggleAside: () => void;
     newTaskOpen: boolean;
     toggleNewTask: () => void;
+    listView: "list" | "grid";
+    toggleListView: () => void;
 }
 
 export const useStore = create<State>((set) => ({
@@ -26,6 +28,8 @@ export const useStore = create<State>((set) => ({
     toggleAside: () => set((state) => ({ asideOpen: !state.asideOpen })),
     newTaskOpen: false,
     toggleNewTask: () => set((state) => ({ newTaskOpen: !state.newTaskOpen })),
+    listView: "list",
+    toggleListView: () => set((state) => ({ listView: state.listView === "list" ? "grid" : "list" })),
 }));
 
 export * from "./useTheme";
