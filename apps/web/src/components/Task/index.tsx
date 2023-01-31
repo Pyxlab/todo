@@ -1,0 +1,63 @@
+import { AppRouter } from "@acme/api";
+import { inferRouterOutputs } from "@trpc/server";
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { Actions } from "./Actions";
+import { Content } from "./Content";
+
+type Task = inferRouterOutputs<AppRouter["todos"]>["create"];
+
+type TaskProps = {
+    task: Task;
+    index: number;
+    listView: "list" | "grid";
+    handleUpdate: (id: string, data: Partial<Task>) => void;
+};
+
+export const Task: React.FC<TaskProps> = ({
+    task,
+    index,
+    listView,
+    handleUpdate,
+}) => {
+    return (
+        <li key={task.id}>
+            <NavLink
+                to={``}
+                className={`
+                    ml-auto mr-4 w-min whitespace-nowrap overflow-hidden max-w-[10rem]
+                    text-center text-ellipsis bg-rose-200 text-rose-600 px-4 py-1 rounded-t-md transition 
+                    dark:bg-slate-700 dark:text-slate-200 block hover:bg-rose-300 dark:hover:bg-rose-500
+                `}
+            >
+                {task.directory.name}
+            </NavLink>
+            <article
+                className={`
+                    flex justify-between rounded-md shadow-md transition p-4
+                    hover:shadow-lg
+                    ${
+                        listView === "list"
+                            ? "h-20 sm:h-32"
+                            : "h-52 sm:h-64 flex-col"
+                    }
+                    ${
+                        index === 0
+                            ? "bg-violet-600"
+                            : index % 2 === 1
+                            ? "bg-slate-50 dark:bg-slate-800"
+                            : "bg-slate-100 dark:bg-slate-800 dark:bg-opacity-50"
+                    }
+                `}
+            >
+                <Content task={task} index={index} listView={listView} />
+                <Actions
+                    task={task}
+                    index={index}
+                    listView={listView}
+                    handleUpdate={handleUpdate}
+                />
+            </article>
+        </li>
+    );
+};
