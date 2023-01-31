@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, HasOne, hasOne, InferTypeModel } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, belongsTo, BelongsTo, InferTypeModel } from '@ioc:Adonis/Lucid/Orm'
 import User from './User'
 import Directory from './Directory'
 
@@ -19,17 +19,26 @@ export default class Todo extends BaseModel {
   @column()
   public important: boolean
 
-  @column()
+  @column({
+    serializeAs: 'userId',
+  })
   public userId: string
 
-  @hasOne(() => User)
-  public user: HasOne<typeof User>
+  @belongsTo(() => User)
+  public user: BelongsTo<typeof User>
 
-  @column()
+  @column({
+    serializeAs: 'dueDate',
+  })
+  public dueDate: DateTime
+
+  @column({
+    serializeAs: null,
+  })
   public directoryId: string
 
-  @hasOne(() => Directory)
-  public directory: HasOne<typeof Directory>
+  @belongsTo(() => Directory)
+  public directory: BelongsTo<typeof Directory>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
