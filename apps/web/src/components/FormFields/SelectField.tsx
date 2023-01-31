@@ -80,7 +80,7 @@ export const SelectField: React.FC<SelectFieldProps> = ({
                                 }`}
                                 placeholder={placeholder}
                             >
-                                {options.find((option) => option.value === value)?.label || "No options"}
+                                {value ? options.find((option) => option.value === value)?.label || "No options" : "Select an option"}
                             </Listbox.Button>
                             <Transition
                                 as={React.Fragment}
