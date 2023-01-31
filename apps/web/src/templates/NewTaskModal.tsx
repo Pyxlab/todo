@@ -1,19 +1,44 @@
+import { AppRouter } from "@acme/api";
 import { Dialog } from "@headlessui/react";
-import { X } from "phosphor-react";
 import { FormProvider, useForm } from "react-hook-form";
-import { Button } from "~/components/Button";
-import { CheckboxField, InputField, SelectField, TextAreaField } from "~/components/FormFields";
+import { toast } from "react-toastify";
+import { trpc } from "~/utils/trpc";
+import { useErrorHandler } from "~/utils/error-handle";
 import { useStore } from "~/store";
+import { TaskForm } from "./TaskForm";
+import { inferRouterInputs } from "@trpc/server";
+import { queryClient } from "~/providers/trpc";
+
+type CreateTodoInput = inferRouterInputs<AppRouter["todos"]>["create"]
 
 export const NewTaskModal: React.FC = () => {
     const isOpen = useStore((state) => state.newTaskOpen);
     const toggle = useStore((state) => state.toggleNewTask);
+    
+    const { mutate } = trpc.todos.create.useMutation();
 
-    const methods = useForm();
+    const methods = useForm<CreateTodoInput>();
 
-    const handleSubmit = methods.handleSubmit((data) => {
-        console.log(data);
-    });
+    const handleSubmit = methods.handleSubmit(
+        (data) => {
+            const transformdData = {
+                ...data,
+                dueDate: new Date(data.dueDate),
+            };
+
+            mutate(transformdData, {
+                onSuccess: () => {
+                    toast.success("Your task as sucessful created!");
+                    queryClient.invalidateQueries({
+                        queryKey: trpc.todos.getByUser.getQueryKey(),
+                    });
+                    toggle();
+                },
+                onError: useErrorHandler(methods.setError),
+            });
+        },
+        (err) => console.log(err)
+    );
 
     return (
         <Dialog
@@ -21,69 +46,11 @@ export const NewTaskModal: React.FC = () => {
             open={isOpen}
             onClose={toggle}
         >
-            <Dialog.Overlay className="fixed inset-0 bg-black opacity-20"/>
+            <Dialog.Overlay className="fixed inset-0 bg-black opacity-20" />
             <Dialog.Panel className="fixed inset-0">
-                <div className=" flex items-center justify-center h-full w-full px-2">
-                    <div className="z-40 bg-slate-200 dark:bg-slate-900 max-w-lg w-full rounded-lg p-4 sm:p-5 flex flex-col justify-start">
-                        <div className="flex items-center justify-between">
-                            <h2 className="text-xl md:text-2xl font-semibold">
-                                Add a task
-                            </h2>
-                            <button
-                                onClick={toggle}
-                                className="text-slate-600 dark:text-slate-400"
-                                aria-label="Close dialog"
-                            >
-                                <X size={24} />
-                            </button>
-                        </div>
-                        <FormProvider {...methods}>
-                            <form onSubmit={handleSubmit} className="flex w-full mt-4 flex-col gap-1">
-                                <InputField
-                                    name="title"
-                                    label="Title"
-                                    placeholder="e.g, study for the test"
-                                    fullWidth
-                                />
-                                <InputField
-                                    name="date"
-                                    label="Date"
-                                    placeholder="e.g, 2021-12-31"
-                                    type="date"
-                                    fullWidth
-                                />
-                                <TextAreaField
-                                    name="description"
-                                    label="Description (optional)"
-                                    placeholder="e.g, study for the test"
-                                    fullWidth
-                                />
-                                <SelectField
-                                    name="directory"
-                                    label="Select a directory"
-                                    placeholder="e.g, study for the test"
-                                    fullWidth
-                                    defaultValue={"home"}
-                                    options={[]}
-                                />
-                                <CheckboxField
-                                    name="important"
-                                    label="Mark as important"
-                                    className="mb-4"
-                                />
-                                <CheckboxField
-                                    name="completed"
-                                    label="Mark as completed"
-                                    className="mb-4"
-                                />
-
-                                <Button type="submit" className="w-full">
-                                    Add task
-                                </Button>
-                            </form>
-                        </FormProvider>
-                    </div>
-                </div>
+                <FormProvider {...methods}>
+                    <TaskForm type="create" handleSubmit={handleSubmit} />
+                </FormProvider>
             </Dialog.Panel>
         </Dialog>
     );
