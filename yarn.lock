@@ -805,10 +805,10 @@
     slugify "^1.6.5"
     truncatise "0.0.8"
 
-"@pyxlab/adonis-trpc@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@pyxlab/adonis-trpc/-/adonis-trpc-1.0.7.tgz#cb81e6879976d51365cb2803535d4d57fcbe23f2"
-  integrity sha512-GDhvg/E17JLlQBpzOsUcjQB56UOptm3IJIKZHG9VqvKGCDdxEtMnjE+f5b2dGiGKeUgUBumHRK5prmlr9BAFKg==
+"@pyxlab/adonis-trpc@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@pyxlab/adonis-trpc/-/adonis-trpc-1.0.8.tgz#9fa86bcb08810f663713f2fb2f6daadec3031860"
+  integrity sha512-jyzh7FVlWNsbNmX/s840X5Xx2P53LoAB02avkcOhrKyYmc9WyipCyh/w0xJikiN4zHwyfpC0v9HjqOTMYKg7Dw==
   dependencies:
     "@trpc/server" "^10.9.0"
     superjson "^1.12.2"
@@ -895,6 +895,11 @@
   integrity sha512-y5mb86JUoiUgBjY/o6FJSFZSEttfb3Q5gllE4xoKjAAD+vBrnIhE4dViwUuow3va8mpH4s9jyUbUbrRGoRdc2Q==
   dependencies:
     mini-svg-data-uri "^1.2.3"
+
+"@tailwindcss/line-clamp@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/line-clamp/-/line-clamp-0.4.2.tgz#f353c5a8ab2c939c6267ac5b907f012e5ee130f9"
+  integrity sha512-HFzAQuqYCjyy/SX9sLGB1lroPzmcnWv1FHkIpmypte10hptf4oPUfucryMKovZh2u0uiS9U5Ty3GghWfEJGwVw==
 
 "@tanstack/query-core@4.22.0":
   version "4.22.0"
