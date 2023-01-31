@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
         <Providers>
             <App />
+            <NewTaskModal />
         </Providers>
-        <NewTaskModal />
     </React.StrictMode>
 );

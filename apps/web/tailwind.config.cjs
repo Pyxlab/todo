@@ -20,7 +20,8 @@ module.exports = {
         require('@tailwindcss/forms')({
             strategy: 'class',
         }),
-        require('@headlessui/tailwindcss')({ prefix: 'ui' })
+        require('@headlessui/tailwindcss')({ prefix: 'ui' }),
+        require('@tailwindcss/line-clamp'),
     ],
     darkMode: "class",
 }
