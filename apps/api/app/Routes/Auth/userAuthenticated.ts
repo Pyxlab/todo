@@ -3,8 +3,4 @@ import { z } from 'zod'
 
 export const userAuthenticated = procedure.protected
   .input(z.object({}).nullish())
-  .query(async ({ ctx: { auth } }) => {
-    const user = auth.user
-
-    return user?.serialize()
-  })
+  .query(async ({ ctx: { auth } }) => auth.user.serialize())

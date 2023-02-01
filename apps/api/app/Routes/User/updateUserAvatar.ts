@@ -10,11 +10,11 @@ export const updateUserAvatarProcedure = procedure.protected
   .mutation(async ({ ctx: { auth }, input }) => {
     const user = auth.user
 
-    user?.fill({
+    user.fill({
       avatar: input.avatar,
     })
 
-    await user?.save()
+    await user.save()
 
-    return user?.serialize()
+    return user.serialize()
   })

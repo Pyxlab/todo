@@ -11,7 +11,7 @@ export const createDirectoryProcedure = procedure.protected
   .mutation(async ({ ctx: { auth }, input }) => {
     const user = auth.user
 
-    const directoryExit = await user?.related('directories').query().where('name', input.name)
+    const directoryExit = await user.related('directories').query().where('name', input.name)
 
     if (directoryExit) {
       throw new TRPCError({
@@ -20,7 +20,7 @@ export const createDirectoryProcedure = procedure.protected
       })
     }
 
-    const directory = await user?.related('directories').create(input)
+    const directory = await user.related('directories').create(input)
 
     return directory?.serialize()
   })

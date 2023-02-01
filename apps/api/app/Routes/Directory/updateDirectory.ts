@@ -12,7 +12,7 @@ export const updateDirectoryProcedure = procedure.protected
   .mutation(async ({ ctx: { auth }, input }) => {
     const user = auth.user
 
-    const directory = await user?.related('directories').query().where('id', input.id).first()
+    const directory = await user.related('directories').query().where('id', input.id).first()
 
     if (!directory) {
       throw new TRPCError({

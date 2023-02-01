@@ -805,10 +805,10 @@
     slugify "^1.6.5"
     truncatise "0.0.8"
 
-"@pyxlab/adonis-trpc@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@pyxlab/adonis-trpc/-/adonis-trpc-1.0.8.tgz#9fa86bcb08810f663713f2fb2f6daadec3031860"
-  integrity sha512-jyzh7FVlWNsbNmX/s840X5Xx2P53LoAB02avkcOhrKyYmc9WyipCyh/w0xJikiN4zHwyfpC0v9HjqOTMYKg7Dw==
+"@pyxlab/adonis-trpc@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@pyxlab/adonis-trpc/-/adonis-trpc-1.0.10.tgz#4b5feeb7516669fe008c550a4efbf01ce6ef08dc"
+  integrity sha512-JpQAZEgJDrKL96nTXPZda3xyfQCBDVUmWT7gzii5BrB17yKOx9xLCkmeIMYX078lyuSscCiW7b3HpzVBEU9Ykg==
   dependencies:
     "@trpc/server" "^10.9.0"
     superjson "^1.12.2"
