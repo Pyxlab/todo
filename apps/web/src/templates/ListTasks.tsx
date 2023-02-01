@@ -21,15 +21,8 @@ export const ListTasks: React.NamedExoticComponent<ListTasksProps> = memo(
         const { mutate } = trpc.todos.update.useMutation();
 
         const handleUpdate = (id: string, data: Partial<Task>) => {
-            const transform = {
-                ...data,
-                dueDate: data.dueDate
-                    ? new Date(data.dueDate as any)
-                    : undefined,
-            };
-
             mutate(
-                { ...transform, id },
+                { ...data, id },
                 {
                     onSuccess: () => {
                         toast.success("Task updated successfully");
