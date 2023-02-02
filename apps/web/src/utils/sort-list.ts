@@ -1,4 +1,7 @@
-export type SortItem = typeof sortList[number];
+export type SortItem = {
+    value: 'order-added' | 'min-date' | 'max-date' | 'completed-first' | 'uncompleted-first';
+    title: string;
+}
 
 export const sortList = [
     { value: "order-added", title: "Order added" },
