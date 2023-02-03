@@ -5,6 +5,7 @@ import { Aside, Main, SideNav } from "~/templates";
 import { ToggleTheme } from "./components/ToggleTheme";
 import { useAuth } from "./hooks/useAuth";
 import { Home } from "./pages/Home";
+import { Importants } from "./pages/Importants";
 import { SignIn } from "./pages/SignIn";
 import { SignUp } from "./pages/SignUp";
 import { useThemeStore } from "./store";
@@ -41,7 +42,7 @@ function App() {
                 <Route element={<PrivateLayout />}>
                     <Route path="/" element={<Home />} />
                     <Route path="/today" element={<div>Today</div>} />
-                    <Route path="/important" element={<div>Important</div>} />
+                    <Route path="/important" element={<Importants />} />
                     <Route path="/completed" element={<div>Completed</div>} />
                     <Route path="/uncompleted" element={<div>Uncompleted</div>} />
                 </Route>
