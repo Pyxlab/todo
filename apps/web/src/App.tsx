@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import { Aside, Main, SideNav } from "~/templates";
 import { ToggleTheme } from "./components/ToggleTheme";
 import { useAuth } from "./hooks/useAuth";
+import { Completed } from "./pages/Completed";
 import { Home } from "./pages/Home";
 import { Importants } from "./pages/Importants";
 import { SignIn } from "./pages/SignIn";
@@ -44,7 +45,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/today" element={<Today />} />
                     <Route path="/important" element={<Importants />} />
-                    <Route path="/completed" element={<div>Completed</div>} />
+                    <Route path="/completed" element={<Completed />} />
                     <Route path="/uncompleted" element={<div>Uncompleted</div>} />
                 </Route>
                 <Route element={<PublicLayout />}>
