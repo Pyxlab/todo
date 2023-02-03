@@ -1,8 +1,13 @@
-import { Disclosure } from "@headlessui/react";
-import { CaretDown, CaretRight } from "phosphor-react";
+import { Disclosure, RadioGroup } from "@headlessui/react";
+import { CaretRight, Plus } from "phosphor-react";
+import React from "react";
+import { useStore } from "~/store";
 import { trpc } from "~/utils/trpc";
 
 export const Directories: React.FC = () => {
+    const directoryId = useStore((state) => state.directoryId);
+    const handleDirectoryId = useStore((state) => state.handleDirectoryId);
+
     const { data: directories } = trpc.directories.list.useQuery();
 
     return (
@@ -19,14 +24,96 @@ export const Directories: React.FC = () => {
                         </div>
                         Directories
                     </Disclosure.Button>
-                    <Disclosure.Panel className="text-gray-500">
-                        {directories?.map((directory) => (
-                            <ul key={directory.id} className="max-h-36 overflow-auto">
-                                <li className="flex items-center pr-4 pl-9 py-2">
-                                    {directory.name}
-                                </li>
-                            </ul>
-                        ))}
+                    <Disclosure.Panel className="text-gray-500 font-semibold mt-2">
+                        <RadioGroup
+                            value={directoryId}
+                            onChange={handleDirectoryId}
+                        >
+                            <RadioGroup.Label className="sr-only">
+                                Directory
+                            </RadioGroup.Label>
+                            <div className="space-y-1">
+                                <RadioGroup.Option
+                                    value={null}
+                                    className={({ checked }) => `
+                                    ${
+                                        checked
+                                            ? "bg-violet-100 dark:bg-violet-900 text-violet-900"
+                                            : "text-gray-900 dark:text-slate-200"
+                                    }
+                                    relative px-5 py-2 cursor-pointer flex focus:outline-none
+                                `}
+                                >
+                                    {({ checked }) => (
+                                        <>
+                                            <div className="flex items-center justify-between w-full">
+                                                <div className="flex items-center">
+                                                    <RadioGroup.Label
+                                                        as="p"
+                                                        className="font-normal text-gray-900 dark:text-slate-200"
+                                                    >
+                                                        All
+                                                    </RadioGroup.Label>
+                                                </div>
+                                                <div
+                                                    className={`${
+                                                        checked
+                                                            ? "border-violet-500 border-r-4"
+                                                            : "border-transparent"
+                                                    } absolute -inset-px pointer-events-none`}
+                                                    aria-hidden="true"
+                                                />
+                                            </div>
+                                        </>
+                                    )}
+                                </RadioGroup.Option>
+                                {directories?.map((directory) => (
+                                    <RadioGroup.Option
+                                        key={directory.id}
+                                        value={directory.id}
+                                        className={({ checked }) => `
+                                        ${
+                                            checked
+                                                ? "bg-violet-100 dark:bg-violet-900 text-violet-900"
+                                                : "text-gray-900 dark:text-slate-200"
+                                        }
+                                        relative px-5 py-2 cursor-pointer flex focus:outline-none
+                                    `}
+                                    >
+                                        {({ checked }) => (
+                                            <>
+                                                <div className="flex items-center justify-between w-full">
+                                                    <div className="flex items-center">
+                                                        <RadioGroup.Label
+                                                            as="p"
+                                                            className="font-normal text-gray-900 dark:text-slate-200"
+                                                        >
+                                                            {directory.name}
+                                                        </RadioGroup.Label>
+                                                    </div>
+                                                    <div
+                                                        className={`${
+                                                            checked
+                                                                ? "border-violet-500 border-r-4"
+                                                                : "border-transparent"
+                                                        } absolute -inset-px pointer-events-none`}
+                                                        aria-hidden="true"
+                                                    />
+                                                </div>
+                                            </>
+                                        )}
+                                    </RadioGroup.Option>
+                                ))}
+                            </div>
+                        </RadioGroup>
+                        <div className="w-full px-5 mt-2">
+                        <button className="flex items-center justify-center w-full px-5 py-2 border-slate-300 dark:border-slate-700 border-2 rounded-md border-dashed hover:text-violet-500">
+                            <div className="mr-2">
+                                <Plus weight="bold" />
+                            </div>
+                            New directory
+                        </button>
+                        </div>
                     </Disclosure.Panel>
                 </div>
             )}
