@@ -12,6 +12,7 @@ type TaskProps = {
     index: number;
     listView: "list" | "grid";
     handleUpdate: (id: string, data: Partial<Task>) => void;
+    handleDelete: (id: string) => void;
 };
 
 export const Task: React.FC<TaskProps> = ({
@@ -19,6 +20,7 @@ export const Task: React.FC<TaskProps> = ({
     index,
     listView,
     handleUpdate,
+    handleDelete,
 }) => {
     return (
         <li key={task.id}>
@@ -56,6 +58,7 @@ export const Task: React.FC<TaskProps> = ({
                     index={index}
                     listView={listView}
                     handleUpdate={handleUpdate}
+                    handleDelete={handleDelete}
                 />
             </article>
         </li>

@@ -18,10 +18,11 @@ export const ListTasks: React.NamedExoticComponent<ListTasksProps> = memo(
         const listView = useStore((state) => state.listView);
         const toggleNewTask = useStore((state) => state.toggleNewTask);
 
-        const { mutate } = trpc.todos.update.useMutation();
+        const { mutate: updateTodo } = trpc.todos.update.useMutation();
+        const { mutate: deleteTodo } = trpc.todos.deteteById.useMutation();
 
         const handleUpdate = (id: string, data: Partial<Task>) => {
-            mutate(
+            updateTodo(
                 { ...data, id },
                 {
                     onSuccess: () => {
@@ -37,6 +38,24 @@ export const ListTasks: React.NamedExoticComponent<ListTasksProps> = memo(
                 }
             );
         };
+
+        const handleDelete = (id: string) => {
+            deleteTodo(
+                { id },
+                {
+                    onSuccess: () => {
+                        toast.success("Task deleted successfully");
+
+                        queryClient.invalidateQueries({
+                            queryKey: trpc.todos.getByUser.getQueryKey(),
+                        });
+                    },
+                    onError: () => {
+                        toast.error("Something went wrong");
+                    },
+                }
+            );
+        }
 
         return (
             <ul
@@ -56,6 +75,7 @@ export const ListTasks: React.NamedExoticComponent<ListTasksProps> = memo(
                         index={index}
                         listView={listView}
                         handleUpdate={handleUpdate}
+                        handleDelete={handleDelete}
                     />
                 ))}
                 <li>

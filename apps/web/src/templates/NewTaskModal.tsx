@@ -1,15 +1,13 @@
-import { AppRouter } from "@acme/api";
 import { Dialog } from "@headlessui/react";
 import { FormProvider, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { trpc } from "~/utils/trpc";
+import { RouterInputs, trpc } from "~/utils/trpc";
 import { useErrorHandler } from "~/utils/error-handle";
 import { useStore } from "~/store";
 import { TaskForm } from "./TaskForm";
-import { inferRouterInputs } from "@trpc/server";
 import { queryClient } from "~/providers/trpc";
 
-type CreateTodoInput = inferRouterInputs<AppRouter["todos"]>["create"]
+type CreateTodoInput = RouterInputs["todos"]["create"];
 
 export const NewTaskModal: React.FC = () => {
     const isOpen = useStore((state) => state.newTaskOpen);
@@ -49,7 +47,7 @@ export const NewTaskModal: React.FC = () => {
             <Dialog.Overlay className="fixed inset-0 bg-black opacity-20" />
             <Dialog.Panel className="fixed inset-0">
                 <FormProvider {...methods}>
-                    <TaskForm type="create" handleSubmit={handleSubmit} />
+                    <TaskForm type="create" handleSubmit={handleSubmit} toggle={toggle} />
                 </FormProvider>
             </Dialog.Panel>
         </Dialog>

@@ -2,18 +2,16 @@ import { X } from "phosphor-react";
 import React from "react";
 import { Button } from "~/components/Button";
 import { InputField, TextAreaField, SelectField, CheckboxField } from "~/components/FormFields";
-import { useStore } from "~/store";
 import { trpc } from "~/utils/trpc";
 
 type TaskFormProps = {
     type: "create" | "edit";
     handleSubmit: () => void;
+    toggle: () => void;
 };
 
-export const TaskForm: React.FC<TaskFormProps> = ({ type, handleSubmit }) => {
-    const toggle = useStore((state) => state.toggleNewTask);
-
-    const { data: directories = [] } = trpc.directories.list.useQuery();
+export const TaskForm: React.FC<TaskFormProps> = ({ type, handleSubmit, toggle }) => {
+    const { data: directories } = trpc.directories.list.useQuery();
 
     return (
         <div className=" flex items-center justify-center h-full w-full px-2">
@@ -61,7 +59,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ type, handleSubmit }) => {
                             options={directories?.map((directory) => ({
                                 value: directory.id,
                                 label: directory.name,
-                            }))}
+                            })) ?? []}
                         />
                         <CheckboxField
                             name="important"
