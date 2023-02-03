@@ -17,7 +17,10 @@ const filterConditions = {
   important: (query: TodoQuery) => query.where('important', true),
   completed: (query: TodoQuery) => query.where('completed', true),
   uncompleted: (query: TodoQuery) => query.where('completed', false),
-  today: (query: TodoQuery) => query.whereRaw(`DATE(due_date) = CURDATE()`),
+  today: (query: TodoQuery) => {
+    const today = new Date().toISOString().split('T')[0]
+    return query.whereRaw('DATE(due_date) = ?', [today])
+  },
 } as const
 
 export const getTodoByUserProcedure = procedure.protected
