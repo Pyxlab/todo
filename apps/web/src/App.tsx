@@ -8,6 +8,7 @@ import { Home } from "./pages/Home";
 import { Importants } from "./pages/Importants";
 import { SignIn } from "./pages/SignIn";
 import { SignUp } from "./pages/SignUp";
+import { Today } from "./pages/Today";
 import { useThemeStore } from "./store";
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
             <Routes>
                 <Route element={<PrivateLayout />}>
                     <Route path="/" element={<Home />} />
-                    <Route path="/today" element={<div>Today</div>} />
+                    <Route path="/today" element={<Today />} />
                     <Route path="/important" element={<Importants />} />
                     <Route path="/completed" element={<div>Completed</div>} />
                     <Route path="/uncompleted" element={<div>Uncompleted</div>} />
