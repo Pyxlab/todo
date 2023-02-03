@@ -10,6 +10,7 @@ import { Importants } from "./pages/Importants";
 import { SignIn } from "./pages/SignIn";
 import { SignUp } from "./pages/SignUp";
 import { Today } from "./pages/Today";
+import { Uncompleted } from "./pages/Uncompleted";
 import { useThemeStore } from "./store";
 
 function App() {
@@ -46,7 +47,7 @@ function App() {
                     <Route path="/today" element={<Today />} />
                     <Route path="/important" element={<Importants />} />
                     <Route path="/completed" element={<Completed />} />
-                    <Route path="/uncompleted" element={<div>Uncompleted</div>} />
+                    <Route path="/uncompleted" element={<Uncompleted />} />
                 </Route>
                 <Route element={<PublicLayout />}>
                     <Route path="/sign-in" element={<SignIn />} />
