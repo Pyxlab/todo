@@ -4,3 +4,4 @@ export * from './Main';
 export * from './Hero';
 export * from './Header';
 export * from './NewTaskModal';
+export * from './EditTaskModal';
