@@ -32,7 +32,9 @@ export default class Todo extends BaseModel {
   })
   public dueDate: DateTime
 
-  @column()
+  @column({
+    serializeAs: 'directoryId',
+  })
   public directoryId: string
 
   @belongsTo(() => Directory)
