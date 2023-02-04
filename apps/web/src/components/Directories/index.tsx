@@ -2,6 +2,7 @@ import { Disclosure, RadioGroup } from "@headlessui/react";
 import { CaretRight, Plus } from "phosphor-react";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { CreateDirectory } from "~/templates/CreateDirectory";
 import { trpc } from "~/utils/trpc";
 
 export const Directories: React.FC = () => {
@@ -119,14 +120,7 @@ export const Directories: React.FC = () => {
                                 ))}
                             </div>
                         </RadioGroup>
-                        <div className="w-full px-5 mt-2">
-                            <button className="flex items-center justify-center w-full px-5 py-2 border-slate-300 dark:border-slate-700 border-2 rounded-md border-dashed hover:text-violet-500">
-                                <div className="mr-2">
-                                    <Plus weight="bold" />
-                                </div>
-                                New directory
-                            </button>
-                        </div>
+                        <CreateDirectory />
                     </Disclosure.Panel>
                 </div>
             )}
