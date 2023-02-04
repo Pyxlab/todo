@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import { useStore } from "~/store";
 import { links } from "~/utils/links";
 import { Header } from "./Header";
@@ -7,9 +7,10 @@ import { Hero } from "./Hero";
 
 export const Main: React.FC = () => {
     const route = useLocation();
-    const currentPath = route.pathname;
+    const [, base] = route.pathname.split("/");
+    const currentPath = base === "all" || !base ? "/" : `/${base}`
 
-    const total = useStore(state => state.total)
+    const total = useStore((state) => state.total);
 
     const title = links.find((link) => link.path === currentPath)?.name;
 

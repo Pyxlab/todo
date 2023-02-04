@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { Aside, Main, SideNav } from "~/templates";
+import { Aside, EditTaskModal, Main, SideNav } from "~/templates";
 import { ToggleTheme } from "./components/ToggleTheme";
 import { useAuth } from "./hooks/useAuth";
 import { Completed } from "./pages/Completed";
@@ -14,7 +14,7 @@ import { Uncompleted } from "./pages/Uncompleted";
 import { useThemeStore } from "./store";
 
 function App() {
-    const mode = useThemeStore(state => state.mode)
+    const mode = useThemeStore((state) => state.mode);
 
     React.useEffect(() => {
         const html = document.querySelector<HTMLHtmlElement>("html")!;
@@ -38,16 +38,27 @@ function App() {
                 ?.setAttribute("content", "#e2e8f0");
         };
     }, [mode]);
-    
+
     return (
         <div className="bg-slate-200 min-h-screen text-slate-600 dark:bg-slate-900 dark:text-slate-400 xl:text-base sm:text-sm text-xs">
             <Routes>
-                <Route element={<PrivateLayout />}>
-                    <Route path="/" element={<Home />}/>
-                    <Route path="today" element={<Today />} />
-                    <Route path="important" element={<Importants />} />
-                    <Route path="completed" element={<Completed />} />
-                    <Route path="uncompleted" element={<Uncompleted />} />
+                <Route path="/" element={<PrivateLayout />}>
+                    <Route index element={<Home />} />
+                    <Route path="all" element={<Home />}>
+                        <Route path=":id/edit" element={<EditTaskModal />} />
+                    </Route>
+                    <Route path="today" element={<Today />}>
+                        <Route path=":id/edit" element={<EditTaskModal />} />
+                    </Route>
+                    <Route path="important" element={<Importants />}>
+                        <Route path=":id/edit" element={<EditTaskModal />} />
+                    </Route>
+                    <Route path="completed" element={<Completed />}>
+                        <Route path=":id/edit" element={<EditTaskModal />} />
+                    </Route>
+                    <Route path="uncompleted" element={<Uncompleted />}>
+                        <Route path=":id/edit" element={<EditTaskModal />} />
+                    </Route>
                 </Route>
                 <Route element={<PublicLayout />}>
                     <Route path="sign-in" element={<SignIn />} />
@@ -70,15 +81,15 @@ function App() {
                 theme={mode}
             />
         </div>
-    )
+    );
 }
 
 function PublicLayout() {
     const location = useLocation();
-    const { isAuthenticated } = useAuth()
+    const { isAuthenticated } = useAuth();
 
     if (isAuthenticated) {
-        return <Navigate to="/" state={{ location }} replace />
+        return <Navigate to="/" state={{ location }} replace />;
     }
 
     // add toggle theme button top right
@@ -90,15 +101,15 @@ function PublicLayout() {
             </div>
             <Outlet />
         </div>
-    )
+    );
 }
 
 function PrivateLayout() {
     const location = useLocation();
-    const { isAuthenticated } = useAuth()
+    const { isAuthenticated } = useAuth();
 
     if (!isAuthenticated) {
-        return <Navigate to="/sign-in" state={{ location }} replace />
+        return <Navigate to="/sign-in" state={{ location }} replace />;
     }
 
     return (
@@ -107,7 +118,7 @@ function PrivateLayout() {
             <Main />
             <Aside className="max-xl:hidden" />
         </div>
-    )
+    );
 }
 
-export default App
+export default App;

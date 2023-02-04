@@ -1,5 +1,5 @@
 import React from "react";
-import { useSearchParams } from "react-router-dom";
+import { Outlet, useSearchParams } from "react-router-dom";
 import { useStore } from "~/store";
 import { ListTasks } from "~/templates/ListTasks";
 import { trpc } from "~/utils/trpc";
@@ -15,5 +15,10 @@ export const Home: React.FC = () => {
         directoryId,
     });
 
-    return <ListTasks tasks={data} />;
+    return (
+        <React.Fragment>
+            <ListTasks tasks={data} />
+            <Outlet /> 
+        </React.Fragment>
+    );
 };
