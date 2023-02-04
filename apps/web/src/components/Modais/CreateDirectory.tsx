@@ -13,12 +13,18 @@ export const CreateDirectory: React.FC = () => {
 
     const { mutate } = trpc.directories.create.useMutation();
 
-    function toggle() {
-        setOpen((prev) => !prev);
-    }
-
     const methods = useForm<{ name: string }>();
 
+    const toggle = () => {
+        setOpen((prev) => {
+            if (prev) {
+                methods.reset();
+            }
+
+            return !prev;
+        });
+    };
+    
     const handleSubmit = methods.handleSubmit((data) => {
         mutate(data, {
             onSuccess: () => {
@@ -26,10 +32,10 @@ export const CreateDirectory: React.FC = () => {
 
                 toast.success("Your directory as sucessful created!");
                 queryClient.invalidateQueries(queryKey);
-                
+
                 toggle();
             },
-            onError: useErrorHandler(methods.setError)
+            onError: useErrorHandler(methods.setError),
         });
     });
 
@@ -54,7 +60,7 @@ export const CreateDirectory: React.FC = () => {
                             onSubmit={handleSubmit}
                             className="bg-white dark:bg-slate-800 rounded-md shadow-lg p-5 w-full"
                         >
-                            <Dialog.Title className="text-lg font-medium text-gray-900 dark:text-slate-200">
+                            <Dialog.Title className="text-xl font-medium text-gray-900 dark:text-slate-200">
                                 Create a new directory
                                 <button
                                     onClick={toggle}
@@ -63,7 +69,7 @@ export const CreateDirectory: React.FC = () => {
                                     <X weight="bold" />
                                 </button>
                             </Dialog.Title>
-                            <Dialog.Description className="mt-2 text-sm text-gray-500 dark:text-slate-400 line-clamp-6">
+                            <Dialog.Description className="mt-2 text-lg text-gray-500 dark:text-slate-400 line-clamp-6">
                                 This directory will be created in the root of
                                 your project.
                             </Dialog.Description>
