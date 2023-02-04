@@ -62,7 +62,7 @@
     "@adonisjs/core": "^5.9.0",
     "@adonisjs/lucid": "^18.3.0",
     "@adonisjs/repl": "^3.1.11",
-    "@pyxlab/adonis-trpc": "^1.0.10",
+    "@pyxlab/adonis-trpc": "^1.0.11",
     "i18next": "^22.4.9",
     "luxon": "^3.2.1",
     "pg": "^8.8.0",
