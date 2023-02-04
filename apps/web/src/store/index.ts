@@ -7,8 +7,6 @@ interface State {
     setTotal: (total: number) => void;
     sortBy: SortItem;
     handleSortChange: (item: SortItem) => void;
-    directoryId: string | null;
-    handleDirectoryId: (id: string | null) => void;
     sideNavOpen: boolean;
     toggleSideNav: () => void;
     asideOpen: boolean;
@@ -25,8 +23,6 @@ export const useStore = create(
             total: 0,
             sortBy: sortList[0],
             handleSortChange: (item) => set({ sortBy: item }),
-            directoryId: null,
-            handleDirectoryId: (id) => set({ directoryId: id }),
             setTotal: (total) => set({ total }),
             sideNavOpen: false,
             toggleSideNav: () =>

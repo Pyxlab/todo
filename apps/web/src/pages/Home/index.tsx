@@ -1,11 +1,19 @@
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import { useStore } from "~/store";
 import { ListTasks } from "~/templates/ListTasks";
 import { trpc } from "~/utils/trpc";
 
 export const Home: React.FC = () => {
-    const sortBy = useStore(state => state.sortBy.value);
-    const { data = [] } = trpc.todos.getByUser.useQuery({ sortBy });
+    const [searchParams] = useSearchParams();
+    const sortBy = useStore((state) => state.sortBy.value);
+
+    const directoryId = searchParams.get("directoryId");
+    
+    const { data = [] } = trpc.todos.getByUser.useQuery({
+        sortBy,
+        directoryId,
+    });
 
     return <ListTasks tasks={data} />;
 };
