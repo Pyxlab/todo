@@ -11,12 +11,19 @@ export const updateTodoSchema = z.object({
   completed: z.boolean().optional(),
   important: z.boolean().optional(),
   dueDate: z
-    .date()
+    .string()
+    .or(z.date())
     .optional()
     .transform((date) => {
-      if (date) {
-        return DateTime.fromISO(date.toISOString())
+      if (!date) {
+        return
       }
+
+      if (date instanceof Date) {
+        return DateTime.fromJSDate(date)
+      }
+
+      return DateTime.fromISO(date)
     }),
   directoryId: z.string().optional(),
 })

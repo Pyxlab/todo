@@ -35,6 +35,7 @@ export const getTodoByUserProcedure = procedure.protected
           'uncompleted-first',
         ] as const),
         filterBy: z.enum(['important', 'completed', 'uncompleted', 'today'] as const).optional(),
+        directoryId: z.string().uuid().nullable(),
       })
       .nullish()
   )
@@ -45,6 +46,10 @@ export const getTodoByUserProcedure = procedure.protected
       const todos = await query
 
       return todos.map((todo) => todo.serialize())
+    }
+
+    if (input.directoryId) {
+      query.where('directory_id', input.directoryId)
     }
 
     if (input.filterBy) {
