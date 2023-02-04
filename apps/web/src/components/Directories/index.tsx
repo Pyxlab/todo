@@ -1,31 +1,35 @@
 import { Disclosure, RadioGroup } from "@headlessui/react";
-import { CaretRight, Plus } from "phosphor-react";
+import { CaretRight } from "phosphor-react";
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { CreateDirectory } from "~/templates/CreateDirectory";
+import {  useSearchParams } from "react-router-dom";
 import { trpc } from "~/utils/trpc";
+import { CreateDirectory } from "../Modais/CreateDirectory";
+import { DeleteDirectoryModal } from "../Modais/DeleteDirectoryModal";
+import { EditDirectoryModal } from "../Modais/EditDirectoryModal";
 
 export const Directories: React.FC = () => {
-    const location = useLocation();
-    const navigate = useNavigate();
+    const [searchParam, setSearchParam] = useSearchParams();
+    const [isTouch, setIsTouch] = React.useState(false);
 
-    const search = new URLSearchParams(location.search);
-    const value = search.get("directoryId") || null;
+    const value = searchParam.get("directoryId") || null;
 
     const { data: directories } = trpc.directories.list.useQuery();
 
     function handleChange(id: string | null) {
-        if (id) {
-            search.set("directoryId", id);
-        } else {
-            search.delete("directoryId");
-        }
+        setSearchParam((prev) => {
+            if (id) {
+                prev.set("directoryId", id);
+            } else {
+                prev.delete("directoryId");
+            }
 
-        navigate({
-            pathname: location.pathname,
-            search: search.toString(),
+            return prev;
         });
     }
+
+    React.useEffect(() => {
+        setIsTouch("ontouchstart" in window);
+    }, []);
 
     return (
         <Disclosure>
@@ -66,7 +70,7 @@ export const Directories: React.FC = () => {
                                                         as="p"
                                                         className="font-normal text-gray-600 dark:text-slate-400"
                                                     >
-                                                        All
+                                                        All directories
                                                     </RadioGroup.Label>
                                                 </div>
                                                 <div
@@ -97,23 +101,40 @@ export const Directories: React.FC = () => {
                                         {({ checked }) => (
                                             <>
                                                 <div className="flex items-center justify-between w-full">
-                                                    <div className="flex items-center">
+                                                    <div
+                                                        className={`
+                                                            ${
+                                                                !isTouch
+                                                                    ? "text-transparent"
+                                                                    : "text-gray-600 dark:text-slate-400"
+                                                            }
+                                                            flex flex-1 items-center transition hover:text-gray-600 hover:dark:text-slate-400
+                                                        `}
+                                                    >
                                                         <RadioGroup.Label
                                                             as="p"
                                                             className="font-normal text-gray-600 dark:text-slate-400"
                                                         >
                                                             {directory.name}
                                                         </RadioGroup.Label>
+                                                        {checked && (
+                                                            <EditDirectoryModal />
+                                                        )}
+                                                        {checked &&
+                                                            directories.length >
+                                                                1 && (
+                                                                <DeleteDirectoryModal />
+                                                            )}
                                                     </div>
-                                                    <div
-                                                        className={`${
-                                                            checked
-                                                                ? "border-violet-500 border-r-4"
-                                                                : "border-transparent"
-                                                        } absolute -inset-px pointer-events-none`}
-                                                        aria-hidden="true"
-                                                    />
                                                 </div>
+                                                <div
+                                                    className={`${
+                                                        checked
+                                                            ? "border-violet-500 border-r-4"
+                                                            : "border-transparent"
+                                                    } absolute -inset-px pointer-events-none`}
+                                                    aria-hidden="true"
+                                                />
                                             </>
                                         )}
                                     </RadioGroup.Option>

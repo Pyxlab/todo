@@ -1,11 +1,10 @@
-import { AppRouter } from "@acme/api";
-import { inferRouterOutputs } from "@trpc/server";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useSearchParams } from "react-router-dom";
+import { RouterOutputs } from "~/utils/trpc";
 import { Actions } from "./Actions";
 import { Content } from "./Content";
 
-type Task = inferRouterOutputs<AppRouter["todos"]>["create"];
+type Task = RouterOutputs["todos"]["create"];
 
 type TaskProps = {
     task: Task;
@@ -22,10 +21,19 @@ export const Task: React.FC<TaskProps> = ({
     handleUpdate,
     handleDelete,
 }) => {
+    const [, setSearchParam] = useSearchParams();
+
+    const handleClick = () => {
+        setSearchParam((prev) => ({
+            ...prev,
+            directoryId: task.directoryId,
+        }));
+    };
+
     return (
         <li key={task.id}>
-            <NavLink
-                to={``}
+            <button
+                onClick={handleClick}
                 className={`
                     ml-auto mr-4 w-min whitespace-nowrap overflow-hidden max-w-[10rem]
                     text-center text-ellipsis bg-rose-200 text-rose-600 px-4 py-1 rounded-t-md transition 
@@ -33,7 +41,7 @@ export const Task: React.FC<TaskProps> = ({
                 `}
             >
                 {task.directory.name}
-            </NavLink>
+            </button>
             <article
                 className={`
                     flex justify-between rounded-md shadow-md transition p-4

@@ -96,7 +96,7 @@ export const Actions: React.FC<ActionsProps> = ({
                 }}
                 title="More options"
                 className={`
-                    transition ml-1
+                    transition ml-1 mt-1
                     ${index === 0 ? "text-slate-100 hover:text-slate-300" : ""}
                 `}
             >
