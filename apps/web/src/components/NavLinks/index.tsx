@@ -27,8 +27,8 @@ export const NavLinks: React.FC = () => {
                             className={({ checked }) => `
                                 ${
                                     checked
-                                        ? "bg-violet-100 dark:bg-slate-700/[.2] text-rose-600"
-                                        : "text-gray-600 dark:text-slate-200"
+                                        ? "bg-violet-100 dark:bg-slate-700/[.2] text-rose-600 dark:text-slate-200"
+                                        : "text-gray-600 dark:text-slate-400"
                                 }
                                 relative px-4 py-2 cursor-pointer flex focus:outline-none
                             `}
@@ -39,7 +39,7 @@ export const NavLinks: React.FC = () => {
                                         <div className="flex items-center">
                                             <RadioGroup.Label
                                                 as="p"
-                                                className="hover:text-rose-600 dark:hover:text-slate-200 dark:text-slate-400 transition"
+                                                className="hover:text-rose-600 dark:hover:text-slate-200 transition"
                                             >
                                                 {link.name}
                                             </RadioGroup.Label>
