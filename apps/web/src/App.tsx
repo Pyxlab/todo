@@ -43,15 +43,15 @@ function App() {
         <div className="bg-slate-200 min-h-screen text-slate-600 dark:bg-slate-900 dark:text-slate-400 xl:text-base sm:text-sm text-xs">
             <Routes>
                 <Route element={<PrivateLayout />}>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/today" element={<Today />} />
-                    <Route path="/important" element={<Importants />} />
-                    <Route path="/completed" element={<Completed />} />
-                    <Route path="/uncompleted" element={<Uncompleted />} />
+                    <Route path="/" element={<Home />}/>
+                    <Route path="today" element={<Today />} />
+                    <Route path="important" element={<Importants />} />
+                    <Route path="completed" element={<Completed />} />
+                    <Route path="uncompleted" element={<Uncompleted />} />
                 </Route>
                 <Route element={<PublicLayout />}>
-                    <Route path="/sign-in" element={<SignIn />} />
-                    <Route path="/sign-up" element={<SignUp />} />
+                    <Route path="sign-in" element={<SignIn />} />
+                    <Route path="sign-up" element={<SignUp />} />
                 </Route>
             </Routes>
             <ToastContainer

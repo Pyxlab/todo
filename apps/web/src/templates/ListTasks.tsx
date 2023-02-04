@@ -5,9 +5,9 @@ import { toast } from "react-toastify";
 import { Task } from "~/components/Task";
 import { queryClient } from "~/providers/trpc";
 import { useStore } from "~/store";
-import { trpc } from "~/utils/trpc";
+import { trpc, RouterOutputs } from "~/utils/trpc";
 
-type Task = inferRouterOutputs<AppRouter["todos"]>["create"];
+type Task = RouterOutputs["todos"]["create"];
 
 type ListTasksProps = {
     tasks: Task[];

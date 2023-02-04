@@ -3,7 +3,7 @@ export type SortItem = {
     title: string;
 }
 
-export const sortList = [
+export const sortList: SortItem[] = [
     { value: "order-added", title: "Order added" },
     { value: "min-date", title: "Earlier first" },
     { value: "max-date", title: "Later first" },
