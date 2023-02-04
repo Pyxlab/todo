@@ -1,17 +1,9 @@
-import { AppRouter } from "@acme/api";
-import { Dialog } from "@headlessui/react";
-import { inferRouterOutputs } from "@trpc/server";
 import { DotsThreeOutlineVertical, Star, Trash } from "phosphor-react";
-import React, { useCallback } from "react";
-import { FormProvider, useForm } from "react-hook-form";
-import { toast } from "react-toastify";
-import { queryClient } from "~/providers/trpc";
-import { TaskForm } from "~/templates/TaskForm";
-import { useErrorHandler } from "~/utils/error-handle";
-import { RouterInputs, RouterOutputs, trpc } from "~/utils/trpc";
+import React from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { RouterOutputs } from "~/utils/trpc";
 
 type Task = RouterOutputs["todos"]["create"];
-type CreateTodoInput = RouterInputs["todos"]["update"];
 
 interface ActionsProps {
     task: Task;
@@ -28,33 +20,7 @@ export const Actions: React.FC<ActionsProps> = ({
     handleUpdate,
     handleDelete,
 }) => {
-    const [open, setOpen] = React.useState(false);
-
-    function toggle() {
-        setOpen((prev) => !prev);
-    }
-
-    const methods = useForm<CreateTodoInput>({ 
-        defaultValues: {
-            ...task,
-            dueDate: task.dueDate.toISOString().split("T")[0] as any,
-        },
-    });
-
-    const { mutate: updateTodo } = trpc.todos.update.useMutation();
-
-    const handleSubmit = methods.handleSubmit((data) =>
-        updateTodo(data, {
-            onSuccess: () => {
-                toast.success("Task updated successfully");
-
-                queryClient.invalidateQueries({
-                    queryKey: trpc.todos.getByUser.getQueryKey(),
-                });
-            },
-            onError: useErrorHandler(methods.setError),
-        })
-    );
+    const location = useLocation();
 
     return (
         <div
@@ -123,31 +89,22 @@ export const Actions: React.FC<ActionsProps> = ({
             >
                 <Trash className="w-5 h-5 sm:w-6 sm:h-6" weight="fill" />
             </button>
-            <button
+            <NavLink
+                to={{
+                    pathname: `${location.pathname === "/" ? "all" : location.pathname}/${task.id}/edit`,
+                    search: location.search,
+                }}
                 title="More options"
                 className={`
                     transition ml-1
                     ${index === 0 ? "text-slate-100 hover:text-slate-300" : ""}
                 `}
-                onClick={toggle}
             >
                 <DotsThreeOutlineVertical
                     className="w-5 h-5 sm:w-6 sm:h-6"
                     weight="fill"
                 />
-            </button>
-            <Dialog
-                className="relative z-30 text-slate-600 dark:text-slate-400 xl:text-base sm:text-sm text-xs"
-                open={open}
-                onClose={toggle}
-            >
-                <Dialog.Overlay className="fixed inset-0 bg-black opacity-20" />
-                <Dialog.Panel className="fixed inset-0">
-                    <FormProvider {...methods}>
-                        <TaskForm type="edit" handleSubmit={handleSubmit} toggle={toggle} />
-                    </FormProvider>
-                </Dialog.Panel>
-            </Dialog>
+            </NavLink>
         </div>
     );
 };

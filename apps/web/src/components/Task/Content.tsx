@@ -11,11 +11,29 @@ interface ContentProps {
     listView: "list" | "grid";
 }
 
-export const Content: React.FC<ContentProps> = ({
-    task,
-    index,
-    listView,
-}) => {
+const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+];
+
+export const Content: React.FC<ContentProps> = ({ task, index, listView }) => {
+    const [year, month, day] = task.dueDate
+        .toISOString()
+        .split("T")[0]
+        .split("-");
+
+    const formattedDate = `${monthNames[+month -1]} ${day}, ${year}`;
+
     return (
         <div className="flex flex-col flex-1">
             <h2
@@ -42,9 +60,7 @@ export const Content: React.FC<ContentProps> = ({
                 `}
             >
                 <Calendar className="w-5 h-5 mr-2" />
-                {new Date(task.dueDate as any).toLocaleDateString("en-US", {
-                    dateStyle: "medium",
-                })}
+                {formattedDate}
             </time>
         </div>
     );
