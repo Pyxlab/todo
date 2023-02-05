@@ -115,9 +115,9 @@ function PrivateLayout() {
 
     return (
         <div className="flex max-xl:flex-col">
-            <SideNav className="max-xl:hidden" />
+            <SideNav className="max-xl:hidden fixed" />
             <Main />
-            <Aside className="max-xl:hidden" />
+            <Aside className="max-xl:hidden fixed right-0" />
         </div>
     );
 }
