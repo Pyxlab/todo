@@ -6,10 +6,12 @@ export const ProgressTasks: React.FC = () => {
     const [searchParam] = useSearchParams();
 
     const directoryId = searchParam.get("directoryId");
+    const query = searchParam.get("q");
 
     const { data: tasks } = trpc.todos.getByUser.useQuery({
         sortBy: "order-added",
         directoryId,
+        query,
     });
 
     const currentDay = new Date();
