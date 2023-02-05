@@ -4,7 +4,7 @@ import App from "./App";
 import { Providers } from "./providers";
 import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
-import { NewTaskModal } from "./templates";
+import { NewTaskModal } from "./components/Modals/NewTaskModal";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>

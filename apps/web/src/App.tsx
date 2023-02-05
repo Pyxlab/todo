@@ -1,7 +1,8 @@
 import React from "react";
 import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { Aside, EditTaskModal, Main, SideNav } from "~/templates";
+import { Aside, Main, SideNav } from "~/templates";
+import { EditTaskModal } from "./components/Modals/EditTaskModal";
 import { ToggleTheme } from "./components/ToggleTheme";
 import { useAuth } from "./hooks/useAuth";
 import { Completed } from "./pages/Completed";
