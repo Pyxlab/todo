@@ -36,6 +36,7 @@ export const getTodoByUserProcedure = procedure.protected
         ] as const),
         filterBy: z.enum(['important', 'completed', 'uncompleted', 'today'] as const).optional(),
         directoryId: z.string().uuid().nullable(),
+        query: z.string().nullish(),
       })
       .nullish()
   )
@@ -63,6 +64,10 @@ export const getTodoByUserProcedure = procedure.protected
       direction = 'desc'
     } else if (input.sortBy === 'max-date') {
       direction = 'desc'
+    }
+
+    if (input.query) {
+      query.whereRaw('LOWER(title) LIKE ?', [`%${input.query.toLowerCase()}%`])
     }
 
     const todos = await query.orderBy(sortBy, direction)
