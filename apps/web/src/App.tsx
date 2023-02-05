@@ -8,6 +8,7 @@ import { useAuth } from "./hooks/useAuth";
 import { Completed } from "./pages/Completed";
 import { Home } from "./pages/Home";
 import { Importants } from "./pages/Importants";
+import { Results } from "./pages/Results";
 import { SignIn } from "./pages/SignIn";
 import { SignUp } from "./pages/SignUp";
 import { Today } from "./pages/Today";
@@ -60,6 +61,7 @@ function App() {
                     <Route path="uncompleted" element={<Uncompleted />}>
                         <Route path=":id/edit" element={<EditTaskModal />} />
                     </Route>
+                    <Route path="results" element={<Results />} />
                 </Route>
                 <Route element={<PublicLayout />}>
                     <Route path="sign-in" element={<SignIn />} />

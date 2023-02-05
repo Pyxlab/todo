@@ -15,6 +15,8 @@ export const Home: React.FC = () => {
         directoryId,
     });
 
+    useStore.setState({ total: data.length })
+
     return (
         <React.Fragment>
             <ListTasks tasks={data} />

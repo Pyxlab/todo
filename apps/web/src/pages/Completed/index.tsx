@@ -15,5 +15,7 @@ export const Completed: React.FC = () => {
         directoryId,
     });
 
+    useStore.setState({ total: data.length })
+
     return <ListTasks tasks={data} />;
 };
