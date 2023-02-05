@@ -3,9 +3,9 @@ import { CaretRight } from "phosphor-react";
 import React from "react";
 import {  useSearchParams } from "react-router-dom";
 import { trpc } from "~/utils/trpc";
-import { CreateDirectory } from "../Modais/CreateDirectory";
-import { DeleteDirectoryModal } from "../Modais/DeleteDirectoryModal";
-import { EditDirectoryModal } from "../Modais/EditDirectoryModal";
+import { CreateDirectory } from "../Modals/CreateDirectory";
+import { DeleteDirectoryModal } from "../Modals/DeleteDirectoryModal";
+import { EditDirectoryModal } from "../Modals/EditDirectoryModal";
 
 export const Directories: React.FC = () => {
     const [searchParam, setSearchParam] = useSearchParams();
