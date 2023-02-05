@@ -6,14 +6,6 @@ import { useAuth } from "~/hooks/useAuth";
 import { firstLastName } from "~/utils/first-last-name";
 import { trpc } from "~/utils/trpc";
 
-// const avatar1 = 'https://i.pravatar.cc/150?img=56';
-
-// <img
-//     src={avatar1}
-//     alt="cat"
-//     className="w-10 rounded-full ml-4"
-// />
-
 export const Aside: React.FC<{ className?: string }> = ({ className }) => {
     const { handleLogout } = useAuth();
     const { data } = trpc.auth.user.useQuery();
@@ -31,7 +23,14 @@ export const Aside: React.FC<{ className?: string }> = ({ className }) => {
         >
             <section className="p-5 flex flex-col h-full">
                 <span className="flex items-center">
-                    <UserCircle size={40} weight="fill" />
+                    {data?.avatar ? (
+                        <img
+                            className="w-10 rounded-full ml-4"
+                            src={data.avatar}
+                        />
+                    ): (
+                        <UserCircle size={40} weight="fill" />
+                    )}
                     <span className="font-medium mx-3 line-clamp-1">
                         Hi, {name}!
                     </span>
