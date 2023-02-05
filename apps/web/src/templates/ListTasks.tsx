@@ -1,5 +1,3 @@
-import { AppRouter } from "@acme/api";
-import { inferRouterOutputs } from "@trpc/server";
 import React, { memo } from "react";
 import { toast } from "react-toastify";
 import { Task } from "~/components/Task";
@@ -55,7 +53,7 @@ export const ListTasks: React.NamedExoticComponent<ListTasksProps> = memo(
                     },
                 }
             );
-        }
+        };
 
         return (
             <ul
@@ -93,5 +91,5 @@ export const ListTasks: React.NamedExoticComponent<ListTasksProps> = memo(
                 </li>
             </ul>
         );
-    },
+    }
 );

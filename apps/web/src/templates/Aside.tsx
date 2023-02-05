@@ -1,5 +1,5 @@
 import { Pencil, UserCircle } from "phosphor-react";
-import { useNavigate } from "react-router-dom";
+import { ProgressTasks } from "~/components";
 import { Button } from "~/components/Button";
 import { SwitchTheme } from "~/components/SwitchTheme";
 import { useAuth } from "~/hooks/useAuth";
@@ -32,13 +32,15 @@ export const Aside: React.FC<{ className?: string }> = ({ className }) => {
             <section className="p-5 flex flex-col h-full">
                 <span className="flex items-center">
                     <UserCircle size={40} weight="fill" />
-                    <span className="font-medium ml-4">Hi, {name}!</span>
+                    <span className="font-medium mx-3 line-clamp-1">Hi, {name}!</span>
                     <Button className="ml-auto px-[14px]">
                         <Pencil className="max-xl:font-medium font-semibold" />
                     </Button>
                 </span>
                 <SwitchTheme />
-                <div className="flex-1"></div>
+                <div className="flex-1">
+                    <ProgressTasks />
+                </div>
                 <Button onClick={handleLogout} className="w-full bg-rose-100 text-rose-600 transition hover:bg-rose-200 dark:bg-slate-700/[.3] dark:text-slate-200">Sign Out</Button>
             </section>
         </aside>
