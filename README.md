@@ -9,15 +9,31 @@
 ![preview]
 > A simple task app (to-do list) developed with AdonisJS, tRPC, ReactJS, Vite, SWC, Typescript, TailwindCSS, and many others.
 
+## 📝 Table of Contents
+
+- [ Task App (To-Do List)](#-task-app-to-do-list)
+  - [📝 Table of Contents](#-table-of-contents)
+  - [🚀 About the project](#-about-the-project)
+  - [📱 Layout](#-layout)
+  - [✨ Features](#-features)
+  - [💻 Prerequisites](#-prerequisites)
+  - [🎲 Running the project](#-running-the-project)
+  - [🛠️ Technologies](#️-technologies)
+    - [Backend](#backend)
+    - [Frontend](#frontend)
+  - [📫 Contributing to the project](#-contributing-to-the-project)
+  - [📃 License](#-license)
+  - [🧑🏽‍💻 Author](#-author)
+
 ## 🚀 About the project
 
-This project was developed to demonstrate the use of the @pyxlab/adonis-trpc package, react with Vite/SWC, structured as a monorepo using the yarn workspace and turborepo of Versel to deploy the project.
+This project was developed to demonstrate the use of the @pyxlab/adonis-trpc package, react with Vite/SWC, structured as a monorepo using the yarn workspace and turborepo of Versel to deploy the project. not only that, but it also uses the TailwindCSS framework for styling, and the HeadlessUI library for the components.
 
 ## 📱 Layout
 
 The reference layout was designed by [Ariane Morelato](https://www.linkedin.com/in/ariane-morelato/), you can access it [here](https://github.com/aridsm/tasks-app).
 
-## 📝 Features
+## ✨ Features
 
 The project is still under development, but the following features are already available:
 
@@ -47,7 +63,7 @@ $ cd todo
 # Install the dependencies
 $ yarn
 
-# Run docker compose
+# Run docker compose, to start the database container (PostgreSQL)
 $ docker-compose up -d
 
 # Run the migrations
@@ -91,11 +107,11 @@ To contribute to the project, follow the steps below:
 3. Make a commit of your changes.
 4. Send a pull request.
 
-## 📝 License
+## 📃 License
 
 This project is under the MIT license. See the [LICENSE](./LICENSE.md) file for more details.
 
-## 📝 Author
+## 🧑🏽‍💻 Author
 
 Made with ❤️ by Walaff Fernandes 👋🏽 [Get in touch!](https://www.linkedin.com/in/lncitador/) or [See my projects](https://www.github.com/lncitador/)
 
